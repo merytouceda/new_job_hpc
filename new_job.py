@@ -122,10 +122,10 @@ def main():
 
     # This is the structure but the result of thefunctions needs to be written into the output file
     if args.system == "slurm": 
-        create_slurm() # NOTE: this is not the final code!!!
+        create_job('SBATCH', ) # NOTE: this is not the final code!!!
         print(f'Slurm job has been created!')
     elif args.system == "pbs":
-        create_pbs() # NOTE: this is not the final code!!!
+        create_job('PBS', ) # NOTE: this is not the final code!!!
         print(f'Pbs job has been created!')
     else: 
         create_pbs() # NOTE: this is not the final code!!!
@@ -133,40 +133,9 @@ def main():
         print(f'Both pbs and slurm jobs have been created!')
 
 
-# --------------------------------------------------
-def create_pbs(n, g, re, e, p, nt, nn, m, t):
-    """ Create a pbs file
-    takes: 
-    n (name of job)
-    g (group for allocation)
-    re (request email?)
-    e (email address)
-    p (partition)
-    nt (number of tasks)
-    nn (number of nodes)
-    m (memory)
-    t (time)
-    returns: """
-
-    return f"""#!/usr/bin/bash
-# --------------------------------------------------
-# Request resources here
-# --------------------------------------------------
-#PBS --job-name
 
 # --------------------------------------------------
-# Load modules here
-# --------------------------------------------------
-
-# --------------------------------------------------
-# Execute commands here
-# --------------------------------------------------
-"""
-
-
-
-# --------------------------------------------------
-def create_slurm(n, g, re, e, p, nt, nn, m, t):
+def create_job(s,n, g, re, e, p, nt, nn, m, t):
     """ Create a slurm file
     takes: 
     n (name of job)
@@ -184,16 +153,16 @@ def create_slurm(n, g, re, e, p, nt, nn, m, t):
 # --------------------------------------------------
 # Request resources here
 # --------------------------------------------------
-#SBATCH --job-name={n}
-#SBATCH --output={n}.out
-#SBATCH --account={g}
-#SBATCH --mail-type={re}
-#SBATCH --mail-user={e}
-#SBATCH --partition={p}
-#SBATCH --ntasks={nt}
-#SBATCH --nodes={nn}
-#SBATCH --mem={m}
-#SBATCH --time={t}
+#{s} --job-name={n}
+#{s} --output={n}.out
+#{s} --account={g}
+#{s} --mail-type={re}
+#{s} --mail-user={e}
+#{s} --partition={p}
+#{s} --ntasks={nt}
+#{s} --nodes={nn}
+#{s} --mem={m}
+#{s} --time={t}
 
 # --------------------------------------------------
 # Load modules here
