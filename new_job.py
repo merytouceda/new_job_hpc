@@ -7,6 +7,7 @@ Purpose: Create a new (empty) job script for the Uofa HPC system(s)
 
 import argparse
 import os
+import sys
 import re
 from pathlib import Path
 from typing import NamedTuple, Optional, TextIO
@@ -17,7 +18,7 @@ def get_args():
     """Get command-line arguments"""
 
     parser = argparse.ArgumentParser(
-        description='Rock the Casbah',
+        description='Create a HPC job template',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     rc_file = os.path.join(str(Path.home()), '.new_job.py')
@@ -25,6 +26,7 @@ def get_args():
     username = os.getenv('USER') or 'Anonymous'
     hostname = os.getenv('HOSTNAME') or 'localhost'
 
+    parser.add_argument('job', help='Job name', type=str)
 
     parser.add_argument('-s',
                         '--system',
@@ -60,7 +62,7 @@ def get_args():
                         '--email',
                         type=str,
                         default=defaults.get('email',
-                                             f'{username}@{hostname}'), #test that this is the correct one (mtoucedasuarez@localhost)
+                                             f'{username}@{hostname}'), 
                         help='Email for docstring')
     
     parser.add_argument('-p',
@@ -115,27 +117,43 @@ def main():
     """Make a jazz noise here"""
 
     args = get_args()
+    job = args.job
 
+    # Test if job file exists and whether overwrite
+    if os.path.isfile(job) and not args.overwrite:
+        answer = input(f'"{job}" exists.  Overwrite? [yN] ')
+        if not answer.lower().startswith('y'):
+            sys.exit('Will not overwrite. Bye!')
+
+    # create output directory if not provided
     if not os.path.isdir(args.outdir):
         os.makedirs(args.outdir)
-        print(f'Output directory has been created: {}')# in the brackets add the path to the output directory
+        print(f'Output directory has been created: {args.outdir}')
 
-    # This is the structure but the result of thefunctions needs to be written into the output file
+    # create job calling the function with different arguments depending on system
     if args.system == "slurm": 
-        create_job('SBATCH', ) # NOTE: this is not the final code!!!
+        print(create_job('SBATCH', args.name, args.group, args.request_email,
+        args.email, args.partition, args.ntasks, args.nodes, args.memory, args.time), 
+        file=open(job, 'wt'), end='')
         print(f'Slurm job has been created!')
     elif args.system == "pbs":
-        create_job('PBS', ) # NOTE: this is not the final code!!!
+        print(create_job('PBS', args.name, args.group, args.request_email,
+        args.email, args.partition, args.ntasks, args.nodes, args.memory, args.time),
+        file=open(job, 'wt'), end='')
         print(f'Pbs job has been created!')
     else: 
-        create_pbs() # NOTE: this is not the final code!!!
-        create_slurm() # NOTE: this is not the final code!!!
+        print(create_job('PBS', args.name, args.group, args.request_email,
+        args.email, args.partition, args.ntasks, args.nodes, args.memory, args.time),
+        file=open(job, 'wt'), end='')
+        print(create_job('SLURM',args.name, args.group, args.request_email,
+        args.email, args.partition, args.ntasks, args.nodes, args.memory, args.time),
+        file=open(job, 'wt'), end='')
         print(f'Both pbs and slurm jobs have been created!')
 
 
 
 # --------------------------------------------------
-def create_job(s,n, g, re, e, p, nt, nn, m, t):
+def create_job(s, n, g, re, e, p, nt, nn, m, t):
     """ Create a slurm file
     takes: 
     n (name of job)
