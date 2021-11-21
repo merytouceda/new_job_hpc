@@ -1,5 +1,5 @@
 # new_job.py
-Python program to create [UofA HPC] (https://public.confluence.arizona.edu/display/UAHPC/HPC+Documentation) jobs. 
+Python program to create [UofA HPC](https://public.confluence.arizona.edu/display/UAHPC/HPC+Documentation) jobs. 
 
 ## Description
 The script "new_job.py" has been created with the goal to automate the creation of HPC job submission files. 
