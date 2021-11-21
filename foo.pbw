@@ -2,16 +2,16 @@
 # --------------------------------------------------
 # Request resources here
 # --------------------------------------------------
-#SLURM --job-name=new_job
-#SLURM --output=new_job.out
-#SLURM --account=barberan
-#SLURM --mail-type=ALL
-#SLURM --mail-user=mtoucedasuarez@localhost
-#SLURM --partition=standard
-#SLURM --ntasks=1
-#SLURM --nodes=1
-#SLURM --mem=1gb
-#SLURM --time=None
+#PBS --job-name=new_job
+#PBS --output=new_job.out
+#PBS --account=barberan
+#PBS --mail-type=ALL
+#PBS --mail-user=mtoucedasuarez@localhost
+#PBS --partition=standard
+#PBS --ntasks=1
+#PBS --nodes=1
+#PBS --mem=1gb
+#PBS --time=None
 
 # --------------------------------------------------
 # Load modules here

@@ -34,7 +34,7 @@ def get_args():
                         metavar='str',
                         type=str,
                         default='slurm',
-                        choices = ['slurm', 'pbs', 'both'])
+                        choices = ['slurm', 'pbs'])
 
     parser.add_argument('-n',
                         '--name',
@@ -119,11 +119,6 @@ def main():
     args = get_args()
     job = args.job
 
-    # Test if job file exists and whether overwrite
-    if os.path.isfile(job) and not args.overwrite:
-        answer = input(f'"{job}" exists.  Overwrite? [yN] ')
-        if not answer.lower().startswith('y'):
-            sys.exit('Will not overwrite. Bye!')
 
     # create output directory if not provided
     if not os.path.isdir(args.outdir):
@@ -141,15 +136,6 @@ def main():
         args.email, args.partition, args.ntasks, args.nodes, args.memory, args.time),
         file=open(job, 'wt'), end='')
         print(f'Pbs job has been created!')
-    else: 
-        print(create_job('PBS', args.name, args.group, args.request_email,
-        args.email, args.partition, args.ntasks, args.nodes, args.memory, args.time),
-        file=open(job, 'wt'), end='')
-        print(create_job('SLURM',args.name, args.group, args.request_email,
-        args.email, args.partition, args.ntasks, args.nodes, args.memory, args.time),
-        file=open(job, 'wt'), end='')
-        print(f'Both pbs and slurm jobs have been created!')
-
 
 
 # --------------------------------------------------
@@ -165,7 +151,7 @@ def create_job(s, n, g, re, e, p, nt, nn, m, t):
     nn (number of nodes)
     m (memory)
     t (time)
-    returns: """
+    returns: a job template text"""
 
     return f"""#!/usr/bin/bash
 # --------------------------------------------------
