@@ -1,0 +1,23 @@
+#!/usr/bin/bash
+# --------------------------------------------------
+# Request resources here
+# --------------------------------------------------
+#PBS --job-name=new_job
+#PBS --output=new_job.out
+#PBS --account=egornish
+#PBS --mail-type=END
+#PBS --mail-user=maria.touceda.suarez@gmail.com
+#PBS --partition=windfall
+#PBS --ntasks=16
+#PBS --nodes=1
+#PBS --mem=1gb
+#PBS --time=24:00:00
+
+# --------------------------------------------------
+# Load modules here
+# --------------------------------------------------
+
+# --------------------------------------------------
+# Execute commands here
+# --------------------------------------------------
+

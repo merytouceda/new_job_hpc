@@ -2,16 +2,16 @@
 # --------------------------------------------------
 # Request resources here
 # --------------------------------------------------
-#SLURM --job-name=new_job
-#SLURM --output=new_job.out
-#SLURM --account=barberan
-#SLURM --mail-type=ALL
-#SLURM --mail-user=mtoucedasuarez@localhost
-#SLURM --partition=standard
-#SLURM --ntasks=1
-#SLURM --nodes=1
-#SLURM --mem=1gb
-#SLURM --time=None
+#SBATCH --job-name=job1
+#SBATCH --output=job1.out
+#SBATCH --account=egornish
+#SBATCH --mail-type=END
+#SBATCH --mail-user=maria.touceda.suarez@gmail.com
+#SBATCH --partition=windfall
+#SBATCH --ntasks=16
+#SBATCH --nodes=1
+#SBATCH --mem=1gb
+#SBATCH --time=24:00:00
 
 # --------------------------------------------------
 # Load modules here
@@ -20,3 +20,4 @@
 # --------------------------------------------------
 # Execute commands here
 # --------------------------------------------------
+
