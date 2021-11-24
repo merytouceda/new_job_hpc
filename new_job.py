@@ -171,8 +171,7 @@ def main():
         print(f'Output directory has been created: {args.outdir}')
 
     # create filename for saving the new file in the directory
-    filename = [args.outdir, job]
-    filename = '/'.join(filename)
+    filename = os.path.join(args.outdir, job)
 
     # create job calling the function with different arguments depending on system
     # slurm
