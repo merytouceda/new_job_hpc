@@ -178,12 +178,12 @@ def main():
     if args.system == "slurm":
         print(create_job('SBATCH', args),
               file=open(filename, 'wt'), end='')
-        print(f'Slurm job has been created!')
+        print(f'SLURM job has been created!')
     # pbs
     elif args.system == "pbs":
         print(create_job('PBS', args),
               file=open(filename, 'wt'), end='')
-        print(f'Pbs job has been created!')
+        print(f'PBS job has been created!')
 
 
 # --------------------------------------------------
