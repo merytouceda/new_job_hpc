@@ -95,9 +95,6 @@ def run(system: str) -> None:
         outfile = os.path.join(dirname, filename)
         assert os.path.isfile(outfile)
 
-        # check that when -s pbs it is a pbs job
-        # NOTE: still not done this ^
-
         with open(outfile) as fh:
             pragma_name = 'PBS' if system == 'pbs' else 'SBATCH'
             lines = list(filter(lambda s: s.startswith(f'#{pragma_name}'), fh))
