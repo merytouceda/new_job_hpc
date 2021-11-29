@@ -81,8 +81,14 @@ This script has been made to make my life easier, some default values (e.g. grou
 
 **You can change the default values** of arguments in the `get_args()` and `get_defaults()` functions to those that best suit you.  
 
-## Overwrite (Under revision): 
-The script will check if the file name you give it exists. If you don't give it initial instructions on wether it should overwrite a pre-existing file using the flag `-f` `--force`, then the script will ask you if you would like to overwrite. 
+## Overwrite: 
+The script will check if the file name you give it exists. If you don't give it initial instructions on wether it should overwrite a pre-existing file using the flag `-f` `--force`, then the script will ask you if you would like to overwrite: 
+
+```
+$ ./new_job.py foo.slurm
+"jobs/foo.slurm" exists.  Overwrite? [yN] y
+SLURM job has been created!
+```
 
 ## Author
 Mery Touceda-Suárez: maria.touceda.suarez@gmail.com
