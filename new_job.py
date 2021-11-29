@@ -159,7 +159,7 @@ def main():
     args = get_args()
     job = args.job
 
-    # overwrite:
+    # overwrite:  ## this doesn't work anymore, something with the directory
     if os.path.isfile(job) and not args.overwrite:
         answer = input(f'"{job}" exists.  Overwrite? [yN] ')
         if not answer.lower().startswith('y'):
@@ -230,13 +230,6 @@ def get_defaults(file_handle: Optional[TextIO]):
                     defaults[key] = val
 
     return defaults
-
-
-# --------------------------------------------------
-def test_template():
-    """Test the creation of a job 
-    with no arguments passed"""
-    pass
 
 
 # --------------------------------------------------
