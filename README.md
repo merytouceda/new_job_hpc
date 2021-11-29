@@ -41,7 +41,7 @@ optional arguments:
 ```
 
 
-The only required argument is the positional `--job`. 
+The only required argument is the positional `job`, which takes the name you want to give the job file. 
 
 If run with default settings new_job.py will produce the following SLURM template: 
 
@@ -76,10 +76,13 @@ $ less ./jobs/foo.slurm
 This template will be created as a file, which can be stored in a personalized directory specified using the `-d` flag (default: jobs).
 
 
+## Defaults: 
+This script has been made to make my life easier, some default values (e.g. group = barberan and email) are convenient for me but might not be convenient for other users. 
 
+**You can change the default values** of arguments in the `get_args()` and `get_defaults()` functions to those that best suit you.  
 
-#### NOTE: 
-This script has been made to make my life easier, some default values (e.g. group = barberan and email) are convenient for me but might not be convenient for other users. **You can change the default values** of arguments in the `get_args()` and `get_defaults()` functions to those that best suit you.  
+## Overwrite (Under revision): 
+The script will check if the file name you give it exists. If you don't give it initial instructions on wether it should overwrite a pre-existing file using the flag `-f` `--force`, then the script will ask you if you would like to overwrite. 
 
 ## Author
 Mery Touceda-Suárez: maria.touceda.suarez@gmail.com
