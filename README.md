@@ -41,7 +41,7 @@ optional arguments:
 ```
 
 
-The only required argument is the positional `--job`. 
+The only required argument is the positional `job`, which takes the name you want to give the job file. 
 
 If run with default settings new_job.py will produce the following SLURM template: 
 
