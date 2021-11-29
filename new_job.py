@@ -159,12 +159,6 @@ def main():
     args = get_args()
     job = args.job
 
-    # overwrite:  ## this doesn't work anymore, something with the directory
-    if os.path.isfile(job) and not args.overwrite:
-        answer = input(f'"{job}" exists.  Overwrite? [yN] ')
-        if not answer.lower().startswith('y'):
-            sys.exit('Will not overwrite. Bye!')
-
     # create output directory if not provided
     if not os.path.isdir(args.outdir):
         os.makedirs(args.outdir)
@@ -172,6 +166,13 @@ def main():
 
     # create filename for saving the new file in the directory
     filename = os.path.join(args.outdir, job)
+
+    # overwrite:  ## this doesn't work anymore, something with the directory
+    if os.path.isfile(filename) and not args.overwrite:
+        answer = input(f'"{filename}" exists.  Overwrite? [yN] ')
+        if not answer.lower().startswith('y'):
+            sys.exit('Will not overwrite. Bye!')
+
 
     # create job calling the function with different arguments depending on system
     # slurm
