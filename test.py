@@ -36,8 +36,6 @@ def test_usage():
 
 
 # --------------------------------------------------
-
-
 def test_badsystem():
     """test if code crashes weh bad system"""
 
@@ -49,8 +47,6 @@ def test_badsystem():
 
 
 # --------------------------------------------------
-
-
 def test_filenotok():
     """ test that code breaks when file is not given """
 

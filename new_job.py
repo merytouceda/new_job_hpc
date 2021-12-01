@@ -188,23 +188,23 @@ def main():
 
 
 # --------------------------------------------------
-def create_job(s, args:Args) -> str:
+def create_job(system, args:Args) -> str:
     """ Create a job file template """
 
     return f"""#!/usr/bin/bash
 # --------------------------------------------------
 # Request resources here
 # --------------------------------------------------
-#{s} --job-name={args.name}
-#{s} --output={args.name}.out
-#{s} --account={args.group}
-#{s} --mail-type={args.request_email}
-#{s} --mail-user={args.email}
-#{s} --partition={args.partition}
-#{s} --ntasks={args.ntasks}
-#{s} --nodes={args.nodes}
-#{s} --mem={args.memory}
-#{s} --time={args.time}
+#{system} --job-name={args.name}
+#{system} --output={args.name}.out
+#{system} --account={args.group}
+#{system} --mail-type={args.request_email}
+#{system} --mail-user={args.email}
+#{system} --partition={args.partition}
+#{system} --ntasks={args.ntasks}
+#{system} --nodes={args.nodes}
+#{system} --mem={args.memory}
+#{system} --time={args.time}
 
 # --------------------------------------------------
 # Load modules here
