@@ -5,7 +5,7 @@ Python program to create [UofA HPC](https://public.confluence.arizona.edu/displa
 The script "new_job.py" has been created with the goal to automate the creation of HPC job submission files. 
 
 Job submission files for the UofA HPC system can be created for the SLURM or the PBS systems. 
-See more in the HPC wiki: https://public.confluence.arizona.edu/display/UAHPC/HPC+Documentation
+See more in the [HPC wiki](https://public.confluence.arizona.edu/display/UAHPC/HPC+Documentation)
 
 If run with -h|--help new_job.py produces the following:
 
