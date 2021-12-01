@@ -1,9 +1,7 @@
-#!/usr/bin/env python3
-"""
-Test suite for new_job.py
-"""
 
-import io
+""" Test suite for new_job.py"""
+
+
 import os
 import re
 import random
@@ -148,7 +146,3 @@ def random_string():
     k = random.randint(5, 10)
     return ''.join(random.choices(string.ascii_letters + string.digits, k=k))
 
-
-# --------------------------------------------------
-if __name__ == '__main__':
-    main()
